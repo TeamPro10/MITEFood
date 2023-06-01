@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+  <link rel="shortcut icon" href="../Images/logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="../css/order.css">
+</head>
+
+<body>
+  <div class="maincontainer">
+
+    <div class="innercontainer">
+
+      <input type="checkbox" name="" id="checkbox">
+      <div id="bar" class="bar">
+        <div id="bar1"></div>
+        <div id="bar2"></div>
+        <div id="bar3"></div>
+
+      </div>
+
+      <div class="nav">
+        <img src="../Images/logo.png" alt="no_img" id="logo2" width="10%">
+        <span id="lgospn">FoodCourt</span>
+        <nav class="nav1">
+          <img src="../Images/logo.png" alt="no_img" id="logo">
+          <span>FoodCourt</span>
+          <a href="#" id="im3"><img src="../Images/profilelogo.png" alt="no_img" width="80%"></a>
+          <a href="../Html/Index.html">Home</a>
+          <a href="#order-page ">Menu</a>
+          <a href="#Cart">Cart</a>
+          <a href="#" id="im2"><img src="../Images/profilelogo.png" alt="no_img" width="80%"></a>
+        </nav>
+
+      </div>
+      <div class="innercontainer2">
+        <div class="order-page" id="order-page">
+          <!-- <h1>Order Page</h1> -->
+          <div class="menu">
+            <h1>Items</h1><br>
+            <ul>
+              <li>
+                <h3>Burger</h3>
+                <p>Rs.100</p>
+                <button class="cancel">Cancel</button>
+              </li><br>
+              <li>
+                <h3>Pizza</h3>
+                <p>Rs.120</p>
+                <button class="cancel">Cancel</button>
+              </li><br>
+              <li>
+                <h3>Salad</h3>
+                <p>Rs.80</p>
+                <button class="cancel">Cancel</button>
+              </li><br>
+              <li>
+                <h3>Salad</h3>
+                <p>Rs.80</p>
+                <button class="cancel">Cancel</button>
+              </li><br>
+
+            </ul>
+          </div>
+        </div> <br>
+        <hr>
+        <div class="cart" id="Cart">
+          <h2>Bill</h2>
+          <br>
+            <span>Total amt:</span><br><br>
+          <div class="cart-buttons">
+            
+            <button id="clear-cart">Clear Cart</button>
+            <button id="pay">Pay</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- <script>
+                const menuItems = [
+                              {
+                                name: "Burger",
+                                price: 10,
+                              },
+                              {
+                                name: "Pizza",
+                                price: 12,
+                              },
+                              {
+                                name: "Salad",
+                                price: 8,
+                              },
+                          ];
+
+                const cartItems = [];
+
+                const couponCodes = ["SAVE10", "FREESHIP", "DEAL20"];
+
+                function generateCouponCode() {
+                  const randomIndex = Math.floor(Math.random() * couponCodes.length);
+                  return couponCodes[randomIndex];
+                }
+
+                function renderCart() {
+                  const cartList = document.querySelector(".add-to-cart");
+                  cartList.innerHTML = "";
+                  for (const item of cartItems) {
+                    const li = document.createElement("li");
+                    li.innerText = `${item.name} - ${item.price}`;
+                    cartList.appendChild(li);
+                  }
+                }
+
+                function addToCart(itemName) {
+                  const menuItem = menuItems.find((item) => item.name === itemName);
+                  cartItems.push(menuItem);
+                  renderCart();
+                }
+
+                function clearCart() {
+                  cartItems.length = 0;
+                  renderCart();
+                }
+
+                function pay() {
+                  const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
+                  const couponCode = generateCouponCode();
+                  alert(`Total price: ${totalPrice}\nCoupon code: ${couponCode}`);
+                }
+
+                const addToCartButtons = document.querySelectorAll(".add-to-cart");
+                addToCartButtons.forEach((button) => {
+                  const itemName = button.dataset.item;
+                  button.addEventListener("click", () => {
+                    addToCart(itemName);
+                  });
+                });
+
+                const clearCartButton = document.querySelector("#clear-cart");
+                clearCartButton.addEventListener("click", clearCart);
+
+                const payButton = document.querySelector("#pay");
+                payButton.addEventListener("click", pay);
+      </script> -->
+</body>
+
+</html>
