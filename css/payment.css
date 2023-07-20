@@ -72,7 +72,7 @@
   }
   h2{
     position: relative;
-    bottom: 25vh;
+    bottom: 20vh;
   }
   a.button {
     display: inline-block;
@@ -81,7 +81,7 @@
     color: #fff;
     text-decoration: solid;
     position: relative;
-    bottom: 25vh;
+    bottom: 15vh;
     justify-content: center;
     align-items: center;
     transition: background-color 0.3s ease;
@@ -97,12 +97,29 @@
     h1 {
       font-size: 2.5em;
     }
+    label {
+      
+      position: relative;
+      bottom: 5vh;
+    }
     input[type="submit"] {
       width: 50vw;
+      position: relative;
+      bottom: 5vh;
       /* height: 6vh; */
     }
     input[type="file"] {
       padding: 4%;
+      position: relative;
+      bottom: 5vh;
+    }
+    h2{
+      position: relative;
+      bottom: 6vh;
+    }
+    a.button {
+      position: relative;
+      bottom: 5vh;
     }
   }
   
