@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+  <link rel="shortcut icon" href="../Images/logo.png" type="image/x-icon">
+  <script>
+    // Check if device width is less than 700
+    if (window.innerWidth < 700) {
+        // Load order1.css if device width is less than 700
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = '../css/order1.css'; // Path to order1.css
+        document.head.appendChild(link);
+    } else {
+        // Load order.css if device width is 700 or more
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = '../css/order.css'; // Path to order.css
+        document.head.appendChild(link);
+    }
+</script>
+<style>
+  @media only screen and (max-width: 500px) {
+    .dissappear {
+        display: none;
+    }
+}
+
+/* Add CSS for loading animation */
+.loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .loading-overlay img {
+      width: 50px;
+      height: 50px;
+    }
+</style>
+</head>
+
+<body>
+  <div class="maincontainer">
+   
+    <div class="innercontainer">
+      <div class="dissappear"> 
+        <input type="checkbox" name="checkbox" id="checkbox" />
+        <div id="bar" class="bar">
+          <div id="bar1"></div>
+          <div id="bar2"></div>
+          <div id="bar3"></div>
+        </div>
+      </div>
+
+      <div class="nav">
+        <nav>
+        
+        <img src="../Images/logo.png" alt="no_img" id="logo" style="width: 12%; height: auto;">
+        <span style="font-size: 100%;">FoodCourt</span>
+        
+         
+         
+        </nav>
+      </div>
+    </div>
+
+      <div class="innercontainer2">
+        <div class="order-page" id="order-page">
+          <div class="box">
+            <!-- <h2>Order Page</h2> -->
+            <div class="menu">
+              <h2>Items</h2><br>
+              <ul id="item-list">
+                <!-- <li class="menu-item">
+                  <div class="item-info">
+                    
+                  </div>
+                 
+                </li> -->
+                <!-- Add more items as needed -->
+              </ul>
+            </div>
+          </div>
+         
+        </div>
+        <br>
+        <br>
+        <span class="total-amount">Total amt: Rs. <span id="total-amount-value">0.00</span></span><br><br>
+     
+
+
+      </div>
+      <!-- <div class="cart-buttons" style="bottom: 5%;">
+        <button id="clear-cart" class="bottom-left-button" style="border-radius: 0px;" onclick="clearCart();"><img class="button-gif" src="../Images/shop.png" alt="GIF" />Clear Cart</button>
+        <button id="pay1" class="bottom-right-button"><img class="button-gif" src="../Images/credit-card.png" alt="GIF" />Pay</button> -->
+
+
+    </div>
+    
+    
+    
+    <!-- Payment Popup -->
+    <script>
+      var finalAmount = localStorage.getItem("totalAmount");
+      // Create the payment popup div
+var paymentPopup = document.createElement('div');
+paymentPopup.setAttribute('id', 'payment-popup');
+paymentPopup.classList.add('popup');
+
+// Create the popup content div
+var popupContent = document.createElement('div');
+popupContent.classList.add('popup-content');
+
+// Create the input wrapper div
+var inputWrapper = document.createElement('div');
+inputWrapper.classList.add('input-wrapper');
+
+// Create the label for delivery time
+var deliveryTimeLabel = document.createElement('label');
+deliveryTimeLabel.setAttribute('for', 'order-time');
+deliveryTimeLabel.textContent = 'Select Delivery Time:';
+
+// Create the input for delivery time
+var deliveryTimeInput = document.createElement('input');
+deliveryTimeInput.setAttribute('type', 'time');
+deliveryTimeInput.setAttribute('id', 'order-time');
+deliveryTimeInput.setAttribute('name', 'order-time');
+
+// Create the display time div
+var displayTimeDiv = document.createElement('div');
+displayTimeDiv.setAttribute('id', 'display-time');
+displayTimeDiv.classList.add('display-time');
+
+// Append the label, input, and display time div to the input wrapper
+inputWrapper.appendChild(deliveryTimeLabel);
+inputWrapper.appendChild(deliveryTimeInput);
+inputWrapper.appendChild(document.createElement('br'));
+inputWrapper.appendChild(displayTimeDiv);
+inputWrapper.appendChild(document.createElement('br'));
+
+// Create the center element
+var centerElement = document.createElement('center');
+
+// Create the pay button
+var payButton = document.createElement('button');
+payButton.setAttribute('id', 'pay');
+payButton.classList.add( 'btn', 'btn-anim');
+
+payButton.textContent = 'Pay  Rs.'+finalAmount;
+
+// Append the pay button to the center element
+centerElement.appendChild(payButton);
+
+// Append the input wrapper and center element to the popup content
+popupContent.appendChild(inputWrapper);
+popupContent.appendChild(centerElement);
+
+// Append the popup content to the payment popup
+paymentPopup.appendChild(popupContent);
+
+// Append the payment popup to the document body
+document.body.appendChild(paymentPopup);
+
+      </script>
+  <!-- <div id="payment-popup" class="popup">
+    <div class="popup-content">
+      <div class="input-wrapper">
+        <label for="order-time">Select Delivery Time:</label>
+        <input type="time" id="order-time" name="order-time">
+        <br>
+        <div id="display-time" class="display-time"></div>
+        <br>
+      </div>
+      <center>
+        <button id="pay" class="pay-button">Pay </button>
+    </center> -->
+
+
+   
+  </div>
+  
+
+ <!-- Fixed Navbar -->
+<div class="fixed-navbar">
+  <nav>
+      <a href="./index">
+          <img src="../Images/home-button.png" alt="Home" />
+          <span>Home</span>
+      </a>
+      <a href="#" id="clear-cart">
+        <img src="../Images/shop.png" alt="Home" />
+        <span style="font-weight: bold; text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);" onclick="clearCart();">Clear Cart</span>
+
+    </a>
+    <a href="" id="pay1">
+      <img src="../Images/credit-card.png" alt="Home" />
+      
+      <span style="font-weight: bold; text-shadow: 0 0 5px rgba(255,255,255,0.7);">Pay</span>
+  </a>
+     
+      </a>
+      <a href="#"onclick="redirectToProfile()">
+          <img src="../Images/user.png" alt="Profile" />
+          <span>Profile</span>
+      </a>
+      
+  </nav>
+</div>
+
+    
+  </div>
+  
+
+  <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-database.js"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="../js/razorpay.js"></script>
+  <script src="../js/connection_db.js"></script>
+  <!-- <script src="../js/disableinspect.js"></script> -->
+  <script src="../js/order.js"></script>
+  <script>
+
+
+
+    // JavaScript for showing the payment popup
+document.getElementById('pay1').addEventListener('click', function() {
+  event.preventDefault(); // Prevent default behavior (refreshing the page)
+
+  document.getElementById('payment-popup').style.display = 'block';
+});
+
+// JavaScript for hiding the payment popup when clicking outside the popup
+window.addEventListener('click', function(event) {
+  var paymentPopup = document.getElementById('payment-popup');
+  if (event.target == paymentPopup) {
+    paymentPopup.style.display = 'none';
+  }
+});
+
+// JavaScript for handling payment submission
+document.getElementById('pay').addEventListener('click', function() {
+  // Add your payment submission logic here
+  // For example, you can send payment details to a server
+  console.log('Payment submitted');
+  // Close the payment popup after submission
+  document.getElementById('payment-popup').style.display = 'none';
+});
+  </script>
+  <script>
+    // Get the time input element and the display element
+const orderTimeInput = document.getElementById('order-time');
+const displayTime = document.getElementById('display-time');
+
+// Listen for input event on the time input
+orderTimeInput.addEventListener('input', function() {
+    // Get the input value
+    let inputValue = this.value;
+
+    // Check if input value is not empty
+    if (inputValue) {
+        // Convert time to 12-hour format
+        let timeParts = inputValue.split(':');
+        let hours = parseInt(timeParts[0], 10);
+        let minutes = timeParts[1];
+        let period = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12 || 12;
+        let formattedTime = `${hours}:${minutes} ${period}`;
+
+        // Update the display element with the formatted time
+        displayTime.textContent = formattedTime;
+    } else {
+        // If input value is empty, clear the display
+        displayTime.textContent = '';
+    }
+});
+
+  </script>
+
+<script>
+
+
+
+  </script> 
+<!-- 
+<script>
+// Initial value for ending
+let ending = parseFloat(document.getElementById('total-amount-value').textContent);
+const endingSpan = document.getElementById('ending-value');
+
+// Function to update the ending variable and display it inside the Pay button
+function updateEnding() {
+    // Get the current total amount
+    const totalAmount = parseFloat(localStorage.getItem('totalAmount'));
+
+    // Check if totalAmount is not null or undefined
+    if (totalAmount) {
+        // Update the ending variable
+        ending = totalAmount;
+        // Update the text content inside the Pay button
+        endingSpan.textContent = ending.toFixed(2); // Adjust decimal places as needed
+    }
+}
+
+// Call the updateEnding function to initialize the ending variable and display it
+updateEnding();
+
+
+
+</script> -->
+
+
+<!-- 
+<script>
+  // Get the Pay button element
+const payButton = document.getElementById('pay1');
+
+// Add click event listener to the Pay button
+payButton.addEventListener('click', function() {
+    // Reload the page
+    location.reload();
+});
+
+</script> -->
+</body>
+
+</html>

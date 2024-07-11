@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order</title>
+    <!-- Include CSS -->
+    <!-- <link rel="stylesheet" href="path/to/your/styles.css"> -->
+    <style>
+        /* Styles for header */
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Styles for main */
+main {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+/* Styles for sections */
+section {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+/* Styles for items in the order section */
+#order h2 {
+    margin-bottom: 10px;
+}
+
+/* Styles for items in the cart section */
+#cart h2 {
+    margin-bottom: 10px;
+}
+
+/* Styles for individual items */
+.item {
+    margin-bottom: 10px;
+}
+
+/* Styles for buttons */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Styles for input fields */
+input[type="number"] {
+    width: 50px;
+    text-align: center;
+}
+
+/* Styles for notifications */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+/* Styles for custom alert */
+.custom-alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-alert-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.custom-alert-content button {
+    margin-top: 10px;
+}
+
+/* Styles for mobile view */
+@media only screen and (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
+
+    section {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Order</h1>
+    </header>
+    <main>
+        <section id="order">
+            <h2>Order</h2>
+            <!-- Items fetched from the database will be displayed here -->
+        </section>
+        <section id="cart">
+            <!-- Items added to cart will be displayed here -->
+        </section>
+    </main>
+    <!-- Include Firebase JavaScript SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            // Your Firebase config details
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Paste your JavaScript code here
+        document.addEventListener("click", function (event) {
+            var checkbox = document.getElementById("checkbox");
+            if (event.target !== checkbox) {
+                checkbox.checked = false;
+            }
+        });
+
+        // Your remaining JavaScript code here...
+    </script>
+    <script src="../js/connection_db.js"></script>
+    <script src="../js/newindex.js"></script>
+</body>
+</html>

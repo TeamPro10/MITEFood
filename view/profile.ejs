@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="shortcut icon" href="../Images/logo.png" type="image/x-icon">
+    <style>
+        @media only screen and (max-width: 500px) {
+          .dissappear {
+              display: none;
+          }
+      }
+      
+      @media only screen and (min-width: 501px) {
+          .fixed-navbar {
+              display: none;
+          }
+      }
+     
+      </style>
+</head>
+<body>
+  <!-- Notification Popup -->
+  <div id="notification-popup" class="popup" style="z-index: 1000;">
+    <div class="popup-content">
+        <img src="../Images/notification.gif" alt="Notification Icon" class="popup-img">
+        <div id="notification-message">Please allow us to send notifications to get your Foody Update</div>
+        <button id="allow-notification-btn">OK</button>
+        <button id="deny-notification-btn">Cancel</button>
+    </div>
+</div>
+
+<!-- 
+<div class="cont" style="z-index: 1000;">
+    <div>notfication data </div>
+    <div class="message" style="min-height: 80px;"></div>
+    <div>device token:</div>
+
+</div> -->
+
+<div>
+
+   
+    <div class="innercontainer">
+
+        <input type="checkbox" name="" id="checkbox">
+        <div class="dissappear"> 
+            <input type="checkbox" name="checkbox" id="checkbox" />
+            <div id="bar" class="bar">
+              <div id="bar1"></div>
+              <div id="bar2"></div>
+              <div id="bar3"></div>
+            </div>
+          </div>
+        <div class="nav">
+            <img src="../Images/logo.png" alt="no_img" id="logo2" width="10%">
+            <span id="lgospn">FoodCourt</span>
+            <nav class="nav1">
+                <img src="../Images/logo.png" alt="no_img" id="logo">
+                <span>FoodCourt</span>
+                <a href="./index">Home</a>
+                <!-- <a href="#order-page">Menu</a> -->
+                <a href="/Order">Cart</a>
+                <a href="#" id="loginsts" onclick="redirectToLogin()"></a>
+            </nav>
+            
+        </div>
+        
+    </div>  
+   <div style="z-index: 1000;">
+    
+        <div class="container">
+            <!-- profile-side -->
+            <div class="profile-container">
+                <div class="image-part">
+                    <img src="../Images/logo.png" alt="profile_img" width="200vw">
+                </div>
+                <div class="profile-info">
+                    <table class="profile-table" style="border: 1px solid black;">
+                        <tr >
+                            <td>Name:</td>
+                            <td id="name" colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td id="Email"colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td>Phone:</td>
+                            <td id="phno" >
+                                
+                            </td>
+                            <!-- Move the edit icon outside the <td> and in the same line -->
+                                <td >
+                                    <span id="edit-phone" style="cursor: pointer; display: inline-block; transform: scaleX(-1);">&#9998;</span>
+                                </td>
+                                
+                        </tr>
+                        
+                    </table>
+                 
+                </div>
+               
+            </div>
+            <!-- user-order-summary -->
+            <div>
+                <div class="user-tokens">
+                    <center><h2>Your Orders:</h2></center>
+                    <div id="user-tokens-container"></div>
+                </div>
+                <div id="order-details-popup" style="display: none;">
+                    <div id="order-details-container"></div>
+                    
+                </div>
+            
+                <!-- Order Details Popup -->
+                <div class="popup" id="order-details-popup">
+                    <div class="popup-content">
+                        <span class="close-btn" onclick="closePopup()">&times;</span>
+                        <div id="order-details-container"></div>
+                    </div>
+                </div>
+                <br><br><br><br>  
+            </div>
+            
+            
+          
+                <img src="../Images/nodataimg/3009287.jpg" alt="no_img" width="50%" id="nodatafound">
+                 <!-- Fixed Navbar -->
+
+        </div>
+        <div class="fixed-navbar">
+            <nav>
+                <a href="./index">
+                    <img src="../Images/home-button.png" alt="Home" />
+                    <span>Home</span>
+                </a>
+              
+                <a href="./index#content-container">
+                    <img src="../Images/choices.png" alt="Order" />
+                    <span>Order</span>
+                </a>
+                
+                
+                <a href="./order" >
+                    <img src="../Images/service-cart.png" alt="Search" />
+                    <span>Cart</span>
+                </a>
+                <a href="#" onclick="redirectLogin()">
+                    <img src="../Images/logout.png" alt="LogIn/LogOut" />
+                    <span>LogOut</span>
+                </a>
+                
+                <!-- <a href="#" id="loginsts" onclick="redirectToLogin()"></a> -->
+            </nav>
+          </div>  
+    </div>
+    <script>
+
+        function toggleDropdown() {
+            var dropdownContent = document.getElementById("dropdown-content");
+            if (dropdownContent.style.display === "none") {
+                dropdownContent.style.display = "block";
+            } else {
+                dropdownContent.style.display = "none";
+            }
+        }
+
+        function searchToken() {
+            var input, filter, container, tokens, token, i, tokenValue;
+            input = document.getElementById('token-search');
+            filter = input.value.toUpperCase();
+            container = document.querySelector('.summary-part');
+            tokens = container.getElementsByClassName('token-container');
+            for (i = 0; i < tokens.length; i++) {
+                token = tokens[i].getElementsByTagName('h2')[0];
+                tokenValue = token.textContent || token.innerText;
+                if (tokenValue.toUpperCase() === filter) {
+                    tokens[i].style.display = '';
+                } else {
+                    tokens[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-firestore.js"></script>
+    <script src="../js/connection_db.js"></script>
+    <!-- <script src="../js/disableinspect.js"></script> -->
+    <script src="../js/profile.js"></script>
+    <script src="../js/message.js"></script>
+   <script>
+    function redirectLogin() {
+    var width = window.innerWidth;
+    var username = localStorage.getItem("inputValue");
+    
+    if (width < 500) {
+        if (username) {
+            localStorage.removeItem("inputValue");
+            window.location.href = '/loginmob';
+        } else {
+            window.location.href = '/loginmob';
+        }
+    } else {
+        if (username) {
+            localStorage.removeItem("inputValue");
+            window.location.href = '/login';
+        } else {
+            window.location.href = '/login';
+        }
+    }
+}
+
+   </script>
+
+    
+<script type="module">
+
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+// import { getMessaging } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js";
+import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js";
+
+// Firebase configuration object
+const firebaseConfig = {
+    apiKey: "AIzaSyCwK0ichC-DJxoec0RFrAPsUMEPIwvQzE4",
+    authDomain: "foodcourt-80fc0.firebaseapp.com",
+    databaseURL: "https://foodcourt-80fc0-default-rtdb.firebaseio.com",
+    projectId: "foodcourt-80fc0",
+    storageBucket: "foodcourt-80fc0.appspot.com",
+    messagingSenderId: "382207958425",
+    appId: "1:382207958425:web:1d65a262f2cd79d168c708",
+    measurementId: "G-F94HZSH65B"
+};
+
+// Initialize Firebase app
+const app = initializeApp(firebaseConfig);
+
+// Initialize Firebase Cloud Messaging and get a reference to the service
+const messaging = getMessaging(app);
+
+// Export the Firebase app and messaging service
+export { app, messaging };
+
+
+    // Function to show the notification popup
+function showNotificationPopup() {
+    var notificationPopup = document.getElementById('notification-popup');
+    notificationPopup.style.display = 'block';
+}
+
+// Function to hide the notification popup
+function hideNotificationPopup() {
+    var notificationPopup = document.getElementById('notification-popup');
+    notificationPopup.style.display = 'none';
+}
+
+// Function to handle the OK button click
+function handleAllowNotification() {
+    Notification.requestPermission().then(function (permission) {
+        if (permission === 'granted') {
+            // Permission is granted, hide the popup
+            getToken(messaging, { vapidKey: 'BCNqi8jUNYGpARMeoltKCupdKgfvUO0wGG6YkiH-YbQcCN8SlUZ9QXqmZzyYP-UdULSQGAVPgAlbSbME_DlTrzY' })
+ 
+            hideNotificationPopup();
+        }
+    });
+}
+
+// Function to handle the Cancel button click
+function handleDenyNotification() {
+    // Hide the popup
+    hideNotificationPopup();
+}
+
+// Event listener for the OK button
+document.getElementById('allow-notification-btn').addEventListener('click', handleAllowNotification);
+
+// Event listener for the Cancel button
+document.getElementById('deny-notification-btn').addEventListener('click', handleDenyNotification);
+
+// Function to check if notification permission should be asked
+function checkNotificationPermission() {
+    if (Notification.permission !== 'granted' && Notification.permission !== 'denied') {
+        // Permission hasn't been asked yet, show the popup
+        showNotificationPopup();
+    }
+}
+
+// Check notification permission when the page is loaded
+window.addEventListener('load', checkNotificationPermission);
+
+
+
+</script>
+
+
+
+<script>
+   
+   document.getElementById('edit-phone').addEventListener('click', function() {
+    // Redirect the user to another page where they can edit their phone number
+    window.location.href = './otp'; 
+});
+
+</script>
+</body>
+
+</html>
