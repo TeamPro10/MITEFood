@@ -15,11 +15,11 @@ app.use('/Images', express.static(__dirname + '/Images'))
 app.set('views', path.join(__dirname, 'view'));
 app.set('view engine', 'ejs');
 
-// app.get('/index', (req, res) => {
-//     console.log('Root route accessed'); // Add this line for debugging
-//     console.log(__dirname);
-//     res.render('index', { text: 'Hey' });
-// });
+app.get('/', (req, res) => {
+    console.log('Root route accessed'); // Add this line for debugging
+    console.log(__dirname);
+    res.render('index', { text: 'Hey' });
+});
 
 app.get('/index', (req, res) => {
     console.log(`Current directory is: ${__dirname}`);
