@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<!-- Coding by CodingLab | www.codinglabweb.com-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> SignUp </title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+      .google-sign-in {
+          background-color: #ffffff;
+          color: #fff;
+          text-align: center;
+          font-weight: bold;
+          padding: 15px 30px;
+          /* 1.5 times the original padding */
+          border: none;
+          border-radius: 4px;
+          display: inline-block;
+          cursor: pointer;
+          background-image: url('../Images/search.png');
+          /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+          background-repeat: no-repeat;
+          background-size: contain;
+          /* Cover the entire button with the background image */
+          background-position: center;
+          /* Center the background image */
+      }
+
+      
+#loading {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999; /* make sure it's on top of other elements */
+  }
+
+  #loading-image {
+    width: 200px; /* Adjust the size as needed */
+    height: 200px; /* Adjust the size as needed */
+  }
+
+  </style>
+   </head>
+<body>
+  <div class="inner1">
+    <h1>Sign<span>Up</span></h1>
+  <div class="wrapper">
+   
+    <div class="GloginForm">
+      <center><h2 ><span>SignIn with Google</span> </h2></center>
+      <center> <a  id="login"><i class="google-sign-in"></i></a></center>
+      <center><h3>or</h3></center>
+</div>   
+    <form action="#">
+      <div class="input-box">
+        <input type="text"  id="username" placeholder="Username" required>
+      </div>
+      <div class="input-box">
+        <input type="text" id="email" placeholder="Enter your email" required>
+      </div>
+      <div class="input-box">
+        
+        <input type="text" pattern="[6789][0-9]{9}" minlength="10" maxlength="10" id="phone" 
+           placeholder="Phone number">
+      </div>
+      <div class="input-box">
+        <input type="password" id="pwd" placeholder="Create password" required>
+      </div>
+      <div class="input-box">
+        <input type="password" placeholder="Confirm password" required>
+      </div>
+      
+      <div class="input-box button">
+        <input type="Submit" id="submit" value="Register Now">
+      </div>
+      <div class="text" style="opacity: .6;">
+        <p>Already have an account? <a href="/loginmob" style="color: rgb(26, 65, 81); ">Login now</a></p>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+<script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-app.js"></script>
+   
+<script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-auth.js"></script>
+
+
+<script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-firestore.js"></script>
+<script src="../js/connection_db.js"></script>
+<script src="../js/disableinspect.js"></script>
+<script type="module" src="../js/signup.js"></script>
+
+
+<script type="module">
+   // Import the functions you need from the Firebase SDK
+   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+   import { GoogleAuthProvider, getAuth, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+   import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+   
+
+   // Initialize Firebase
+   const app = initializeApp(firebaseConfig);
+   const provider = new GoogleAuthProvider(app);
+   const auth = getAuth(app);
+   const db = getFirestore(app);
+
+   // Get the login button elements
+   const loginButton = document.getElementById('login');
+   const login1Button = document.getElementById('login1');
+
+   // Function to handle sign-in with Google
+   const signInWithGoogle = async () => {
+       // Sign in with Google popup
+       try {
+           const result = await signInWithPopup(auth, provider);
+           const user = result.user;
+           console.log("Sign-in with Google successful", user);
+
+           // Check if the user already exists in Firestore
+           const userDoc = doc(db, "Users", user.email);
+           const userSnap = await getDoc(userDoc);
+
+           // If the user doesn't exist, save their information to Firestore
+           if (!userSnap.exists()) {
+               await setDoc(userDoc, {
+                   UserName: user.displayName,
+                   Email: user.email,
+                   Phone: user.phone || "", // Make phone number optional
+                   // Add any other fields you want to save
+               });
+              
+               console.log("User information saved to Firestore");
+           } else {
+               console.log("User already exists in Firestore");
+           }
+
+           // Redirect to another page after successful sign-in
+           console.log("Login successful",user.email);
+
+               // Store the email (username) in localStorage
+               localStorage.setItem("inputValue", user.email);
+
+               const overlayDiv = document.createElement('div');
+overlayDiv.style.position = 'fixed';
+overlayDiv.style.top = '0';
+overlayDiv.style.left = '0';
+overlayDiv.style.width = '100%';
+overlayDiv.style.height = '100%';
+overlayDiv.style.backgroundColor = 'rgba(1,1,1, 0.5)'; // Black with 50% opacity
+overlayDiv.style.zIndex = '9999'; // Ensure the overlay is on top
+
+// Append the overlay div to the body of the document
+document.body.appendChild(overlayDiv);
+
+// Create loading div
+const loadingDiv = document.createElement('div');
+loadingDiv.id = 'loading';
+
+// Create an img element for the loading image
+const loadingImage = document.createElement('img');
+loadingImage.id = 'loading-image';
+loadingImage.src = '../Images/stew.gif';
+loadingImage.alt = 'Loading...';
+
+
+// Append the image element to the loading div
+loadingDiv.appendChild(loadingImage);
+
+// Append the loading div to the body of the document
+document.body.appendChild(loadingDiv);
+
+// Set a timeout to redirect after 2 seconds
+setTimeout(() => {
+ // Redirect to another page after 2 seconds
+ window.location.href = '/index';
+}, 3000);
+
+       } catch (error) {
+           // Handle Errors here.
+           const errorCode = error.code;
+           const errorMessage = error.message;
+           console.error("Sign-in with Google error", errorCode, errorMessage);
+       }
+   };
+
+   // Add click event listeners to the login buttons
+   loginButton.addEventListener('click', (event) => {
+       event.preventDefault(); // Prevent the default behavior of the anchor
+       signInWithGoogle();
+   });
+
+   
+</script>
+</html>

@@ -1,0 +1,562 @@
+/* Add your CSS styles here */
+
+body {
+  
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+
+  background-color: #3d3c3c;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-text {
+  margin-left: 10px;
+  font-size: 15px;
+}
+
+#hamburger-open {
+  cursor: pointer;
+}
+
+#hamburger-cancel {
+  display: none;
+  width: 2%;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.sidebar img {
+  width: 18%;
+  /* font-size: 8em; */
+}
+
+.element {
+  /* text-decoration: none; */
+  width: 92%;
+  /* background-color: #a94848; */
+  display: grid;
+  grid-template-columns: 10% 90%;
+  position: relative;
+  top: 5%;
+  left: 5%;
+  padding: 1%;
+  cursor: pointer;
+  color: #333;
+}
+.element img{
+  width: 50%;
+  position: relative;
+  top: 40%;
+}
+.element:hover {
+  border-bottom: 3px solid #333;
+  background-color: #cbc9c9d2;
+}
+
+.element span a {
+  font-size: 15px;
+  text-decoration: none;
+  color: black;
+}
+
+.sidebar {
+  width: 20vw;
+  height: 100vh;
+  position: absolute;
+  top: 8%;
+  left: 0%;
+  /* padding: 10%; */
+  transform: translateX(-1666px);
+  transition: 1s;
+  z-index: 2;
+  background-color: rgb(252, 252, 252);
+}
+
+/* CSS */
+.button-45 {
+  align-items: center;
+  background-color: #FFE7E7;
+  background-position: 0 0;
+  border: 1px solid #FEE0E0;
+  border-radius: 11px;
+  box-sizing: border-box;
+  color: #D33A2C;
+  cursor: pointer;
+  display: flex;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 33.4929px;
+  list-style: outside url(https://www.smashingmagazine.com/images/bullet.svg) none;
+  padding: 2px 12px;
+  text-align: left;
+  text-decoration: none;
+  text-shadow: none;
+  text-underline-offset: 1px;
+  transition: border .2s ease-in-out,box-shadow .2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  word-break: break-word;
+}
+
+.button-45:active,
+.button-45:hover,
+.button-45:focus {
+  outline: 0;
+}
+
+
+.button-45:active {
+  background-color: #D33A2C;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+  color: #FFFFFF;
+}
+
+.button-45:hover {
+  background-color: #FFE3E3;
+  border-color: #FAA4A4;
+}
+
+.button-45:active:hover,
+.button-45:focus:hover,
+.button-45:focus {
+  background-color: #D33A2C;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+  color: #FFFFFF;
+}
+
+.dashboard-left,
+.dashboard-right {
+  /* display: inline-block; */
+  width: 96%;
+  padding: 20px;
+  
+}
+
+.table-unchecked,
+.table-checked {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.table-unchecked th,
+.table-unchecked td,
+.table-checked th,
+.table-checked td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+table th,
+table td {
+  border:1px  black;
+  border-style:dotted;
+  padding: 10px;
+  text-align: left;
+  font-size: large;
+}
+
+table th {
+
+  background-color:  rgb(26, 65, 81);
+  color: #fff;
+}
+table {
+  width: 98%;
+  border:1px solid black;
+}
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.popup-content {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.close-popup {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-popup:hover {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.clear-button{
+  background-color: #23793a;
+  color: white;
+  width: 98%;
+  padding:8px;
+  position: relative;
+  top: 4px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.table-prep tbody td {
+  display: flex;
+  flex-wrap: wrap; /* Allow flex items to wrap to the next line */
+}
+
+#prepared-orders {
+  white-space: normal; /* Allow content to wrap to the next line */
+  overflow-x: auto;
+}
+
+#prepared-orders span {
+  margin-right: 10px;
+  background-color:  rgb(26, 65, 81);
+  padding: 10px;
+  border-radius: 130px;
+  color: white;
+  margin-bottom: 10px; /* Add margin-bottom to create space between spans on a new line */
+}
+
+/* #download_btn {
+  position: relative;
+  left: 15px;
+  background-color: #4c70af;
+  /* Green */
+  /* border: none;
+  color: white;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+} */ 
+
+/* #clear_btn {
+  background-color: #ff3333;
+  /* Red color */
+  /* color: #fff; */
+  /* White text */
+  /* padding: 10px 20px; */
+  /* Adjust padding for better appearance */
+  /* border: none;
+  cursor: pointer;
+  font-size: 16px; */
+  /* Adjust font size as needed */
+  /* position: relative;
+  left: 10px;
+  
+
+  /* Responsive styles */
+  /* @media only screen and (max-width: 768px) { */
+
+    /* padding: 11px 16px; */
+    /* font-size: 14px; */
+  /* }  */
+/* }  */
+
+#close {
+  background-color: #ff3333;
+  /* Red color */
+  color: #fff;
+  /* White text */
+  padding: 10px 20px;
+  /* Adjust padding for better appearance */
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  /* Adjust font size as needed */
+  position: relative;
+
+  /* left: 5px; */
+  /* Responsive styles */
+  @media only screen and (max-width: 768px) {
+
+    padding: 6px 16px;
+    font-size: 14px;
+  }
+}
+
+
+  
+
+
+/* Add more styles as needed */
+
+@media only screen and (max-width: 768px) {
+  body{
+    /* width: fit-content; */
+    display: flexbox;
+    width: fit-content;
+    
+    height: fit-content;
+
+  }
+  
+  
+  .dashboard-left,
+.dashboard-right {
+  
+  width: auto;
+  
+}
+  table,
+  .table {
+    width: 95%;
+  }
+
+  .table-prep{
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
+    white-space: normal; /* Allow text to wrap */
+    word-wrap: break-word; /* Allow long words to break and wrap onto the next line */
+  }
+  
+  
+  #hamburger-cancel {
+    display: none;
+    width: 6%;
+  }
+  .sidebar{
+    width: 100%;
+  }
+  .sidebar img {
+    width: 20px;
+    /* font-size: 8em; */
+  }
+
+  .element {
+    width: 94%;
+    border-bottom: 2px solid #333;
+    font-size: .8em;
+    display: grid;
+    grid-template-columns: auto auto;
+    position: relative;
+    top: 5%;
+    left: 0%;
+    padding: 3%;
+    cursor: pointer;
+    color: #333;
+  }
+
+  .navbar-text {
+    margin-left: 15px;
+  }
+
+
+
+  .clear-button,
+  .confirm-button,
+  .cancel-button,
+  .button-45 {
+    padding: 10px 8px;
+    font-size: 12px;
+   
+  }
+
+
+
+  /* Adjust the width of the file input cell */
+  #td-file {
+    width: 20%;
+    overflow: hidden;
+  }
+
+  /* MobileView */
+  
+ 
+  .navbar {
+    /* width: 100vw; */
+    padding: 10px;
+    font-size: .7em;
+  }
+
+  .received-button {
+     position: relative;
+     
+     right: 20px;
+     width: 90%;
+     height: 20px;
+    
+    /* position: relative; */
+    /* top: 40px; */
+  }
+}
+
+/* Common style for all action buttons */
+.action-button {
+  --b: 3px;   /* border thickness */
+  --s: .45em; /* size of the corner */
+  --color: #373B44;
+  
+  padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+  transition: .3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: .6em;
+  font-size: 16px;
+
+  border: 0;
+  width: 50%;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  align-content: center;
+  
+ 
+}
+
+
+
+.action-button:hover,
+.action-button:focus-visible{
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: .05em;
+}
+
+
+.action-button:active {
+  background: var(--color);
+  color: #fff;
+}
+
+
+/* Style for the confirm button */
+.confirm-button {
+  border-color: #4CAF50;
+}
+
+/* Style for the cancel button */
+.cancel-button {
+  border-color: #f44336;
+  border: 5px ;
+}
+
+/* Style for the view button */
+.view-button {
+  border-color: #008bbad4;
+}
+
+.item-time{
+  display: none;
+}
+
+
+.button-23 {
+  background-color: #FFFFFF;
+  border: 1px solid #222222;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #222222;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  padding: 13px 23px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
+  user-select: none;
+  -webkit-user-select: none;
+  width: auto;
+}
+
+.button-23:disabled {
+  background-color: #ff3333; /* Red color for disabled state */
+  color: #ffffff; /* White text color for disabled state */
+  cursor: not-allowed; /* Change cursor to indicate non-interactivity */
+  /* Add any other styling you want for the disabled state */
+}
+
+
+
+.fixed-navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 8vh; /* 10% of the device screen's height */
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0px -20px 20px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+  z-index: 1000;
+}
+
+
+.fixed-navbar nav a img {
+  width: 30px; /* Adjust as needed */
+  height: 30px; /* Adjust as needed */
+}
+
+.fixed-navbar nav a {
+  color: rgb(26, 65, 81);
+  text-decoration: none;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease; /* Add transition for background color */
+  font-weight: bold;
+}
+
+/* Media query for tablets */
+@media (max-width: 768px) {
+  .fixed-navbar {
+    height: 8vh; /* Adjust height for smaller screens */
+  }
+
+  .fixed-navbar nav a img {
+    width: 25px; /* Adjust image size for smaller screens */
+    height: 25px; /* Adjust image size for smaller screens */
+  }
+
+  .fixed-navbar nav a {
+    padding: 8px 12px; /* Adjust padding for smaller screens */
+  }
+}
+
+/* Media query for mobile devices */
+@media (max-width: 576px) {
+  .fixed-navbar {
+    height: 6vh; /* Adjust height for even smaller screens */
+  }
+
+  .fixed-navbar nav a img {
+    width: 20px; /* Adjust image size for even smaller screens */
+    height: 20px; /* Adjust image size for even smaller screens */
+  }
+
+  .fixed-navbar nav a {
+    padding: 6px 10px; /* Adjust padding for even smaller screens */
+  }
+}
