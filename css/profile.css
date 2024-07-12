@@ -410,7 +410,7 @@ table {
     position: relative;
     left: 0%;
     /* right:8vw; */
-    max-width: 90%;
+    /* max-width: 90%; */
 }
 }
 /* Your existing CSS */
@@ -507,8 +507,8 @@ table {
   /* max-width: 600px; */
   position: relative;
   top: 15%;
-  left: 11%;
-  max-width: 60%;
+  /* left: 11%; */
+  /* max-width: 60%; */
   width: 100%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   z-index: 4;
