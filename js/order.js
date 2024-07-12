@@ -561,8 +561,14 @@ function redirectToProfile() {
       window.location.href = "/profile";
   }
   } else {
-    alert("Login to View Profile!");
+    // alert("Login to View Profile!");
+      document.getElementById("customAlert").style.display = "block";
+    
   }
+}
+// for login
+function closeCustomAlert() {
+  document.getElementById("customAlert").style.display = "none";
 }
 
 function redirectToLogin() {
