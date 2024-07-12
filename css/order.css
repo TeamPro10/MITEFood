@@ -275,6 +275,65 @@ button {
 .order-details input[type="time"]::-webkit-clear-button {
   display: none;
 } */
+/* Custom Alert Styles */
+.custom-alert {
+  display: none; /* Hide the alert box by default */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+.custom-alert-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center; /* Center align content */
+}
+
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 24px; /* Increase font size */
+  cursor: pointer;
+}
+
+.custom-alert-inner {
+  display: flex;
+  flex-direction: column; /* Align items in a column */
+  align-items: center; /* Center align items horizontally */
+}
+
+.custom-alert-inner img {
+  width: 100px; /* Set the width of the image */
+  margin-bottom: 10px; /* Add some space between the image and the paragraph */
+}
+
+.custom-alert-inner p {
+  margin: 0; /* Remove default margin */
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+}
+
+.custom-alert-inner button {
+  background: transparent;
+  border: rgb(26, 65, 81);
+  cursor: pointer;
+  display: flex; /* Use flexbox */
+  align-items: center; /* Center align items vertically */
+  border-radius: 2px;
+}
+
+.custom-alert-inner button img {
+  width: 20px; /* Set the width of the button image */
+  margin-right: 5px; /* Add some space between the image and the text */
+}
+
+
 
 @media screen and (max-width: 768px) {
   .menu h1 {
