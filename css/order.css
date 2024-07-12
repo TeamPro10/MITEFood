@@ -272,9 +272,7 @@ button {
   margin: 0;
 }
 
-.order-details input[type="time"]::-webkit-clear-button {
-  display: none;
-} */
+
 /* Custom Alert Styles */
 .custom-alert {
   display: none; /* Hide the alert box by default */
