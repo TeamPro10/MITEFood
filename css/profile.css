@@ -607,7 +607,7 @@ table {
 .fixed-navbar nav a {
   color: rgb(26, 65, 81);
   text-decoration: none;
-  padding: 10px 12px;
+  padding: 10px 10px;
   transition: background-color 0.3s ease; /* Add transition for background color */
 }
 /* 
