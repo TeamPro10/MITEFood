@@ -16,8 +16,8 @@ body {
 
 .wrapper {
   position: relative;
-  width: 90%; /* Adjusted for mobile */
-  max-width: 430px;
+  width: 105%; /* Adjusted for mobile */
+/*   max-width: 430px; */
   background: #fff;
   padding: 24px; /* Adjusted for mobile */
   border-radius: 6px;
