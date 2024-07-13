@@ -537,7 +537,7 @@ button {
 .fixed-navbar nav a {
   color: rgb(26, 65, 81);
   text-decoration: none;
-  padding: 10px 11px;
+  padding: 8px 8px;
   transition: background-color 0.3s ease; /* Add transition for background color */
 }
 
