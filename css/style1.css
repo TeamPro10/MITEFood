@@ -17,6 +17,7 @@ body {
 
 .wrapper {
   position: relative;
+  left:5%;
   max-width: 430px;
   width: 90%;
   background: #fff;
