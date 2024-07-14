@@ -7,6 +7,24 @@ document.addEventListener("click", function (event) {
 });
 
 //opening and closing of filters
+let foodtype=document.getElementById("foodtype");
+foodtype.addEventListener("click", function () {
+  if(document.getElementById("down-arrow2").style.display == "block"){
+    openfilter('veg-nonveg-category','down-arrow2','up-arrow2')
+  }else{
+    closefilter('veg-nonveg-category','down-arrow2','up-arrow2')
+  }
+})
+
+let foodcategory=document.getElementById("category");
+foodcategory.addEventListener("click", function () {
+  if(document.getElementById("down-arrow").style.display == "block"){
+    openfilter('menu-list','down-arrow','up-arrow')
+  }else{
+    closefilter('menu-list','down-arrow','up-arrow')
+  }
+})
+
 function openfilter(key, dwn, up) {
   document.getElementById(dwn).style.display = "none";
   document.getElementById(up).style.display = "block";
