@@ -25,7 +25,7 @@ body {
 
 /* CSS for .nav */
 .nav {
-    height: 100vh;
+    /* height: 100vh; */
     width: 100%;
     position: relative;
     top: 0;
@@ -62,9 +62,9 @@ body {
     position: absolute;
     top: 0;
     z-index: 1;
-    height: 5%;
+    /* height: 5%; */
     width: 98.8%;
-    padding: 10px;
+    /* padding: 10px; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -537,7 +537,7 @@ button {
 .fixed-navbar nav a {
   color: rgb(26, 65, 81);
   text-decoration: none;
-  padding: 8px 8px;
+  padding: 6px 6px;
   transition: background-color 0.3s ease; /* Add transition for background color */
 }
 
