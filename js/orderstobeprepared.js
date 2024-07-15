@@ -23,22 +23,22 @@ var foodarray = [];
 let tokenconfirmations = [];
 
 // Function to display order details in the popup
-function displayOrderPopup(token, email, username, itemName, time, totalPrice) {
+function displayOrderPopup(token, email,  itemName, time, totalPrice) {
   // Set the order details in the popup
   document.getElementById('popup-token').textContent = token;
   document.getElementById('popup-email').textContent = email;
-  document.getElementById('popup-username').textContent = username;
+  // document.getElementById('popup-username').textContent = username;
   document.getElementById('popup-itemname').textContent = itemName;
   document.getElementById('popup-time').textContent = time;
   document.getElementById('popup-totalprice').textContent = totalPrice;
 
   // Show the popup
-  document.getElementById('order-details-popup').style.display = 'flex';
+  document.getElementById('view-popup').style.display = 'block';
 }
 
 // Function to close the popup
 function closePopup() {
-  document.getElementById('order-details-popup').style.display = 'none';
+  document.getElementById('view-popup').style.display = 'none';
 }
 
 // Your existing function for displaying prepared tokens
@@ -50,25 +50,27 @@ function prepared_tokens() {
       tokendisplay.innerHTML = "";
       for (var key in items) {
         var ItemData = items[key];
-        console.log(ItemData);
+        
 
         if (ItemData.prepared_status === "prepared") {
+          console.log("PreparedFoodToken :",ItemData ,"gmail :",ItemData.gmail,"RestItems :",key);
           var button = document.createElement("button");
           button.setAttribute("class", "token-button");
+
           button.textContent = key;
 
           // Add click event listener to each token button
           button.addEventListener('click', function() {
             // Retrieve order details from the snapshot data
             const token = key;
-            const email = ItemData.email;
-            const username = ItemData.username;
-            const itemName = ItemData.itemName;
+            const email = ItemData.gmail;
+            // const username = ItemData.username;
+            const itemName = ItemData.foodItem;
             const time = ItemData.time;
-            const totalPrice = ItemData.totalPrice;
+            const totalPrice = ItemData.amount;
 
             // Display order details in the popup
-            displayOrderPopup(token, email, username, itemName, time, totalPrice);
+            displayOrderPopup(token, email, itemName, time, totalPrice);
           });
 
           tokendisplay.appendChild(button);
