@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prepared Orders</title>
+    <link rel="shortcut icon" href="../Images/logo.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            background-color: #007BFF;
+            color: white;
+            padding: 1em 0;
+            margin: 0;
+        }
+        #prepared-orders {
+            margin: 2em auto;
+            padding: 1em;
+            max-width: 600px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap:1%;
+        }
+        .token-button {
+            display: block;
+            width: 100%;
+            height: 20vh;
+            padding: 0.5em;
+            margin: 0.5em 0;
+            font-size: 2.2em;
+            background-color: rgb(26, 65, 81);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .token-button:hover {
+            background-color: rgba(26, 65, 81, 0.74);
+        }
+    </style>
+</head>
+<body>
+    <h1>Prepared Orders</h1>
+    <div id="prepared-orders">
+        <!-- Tokens will be displayed here -->
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-database.js"></script>
+    <script src="../js/connection_db.js"></script>
+    <script>
+        var database = firebase.database();
+        let chekedItems = database.ref("checkedItems");
+        let allTokens = [];
+        let currentIndex = 0;
+
+        function displayTokens() {
+            let tokendisplay = document.getElementById("prepared-orders");
+            tokendisplay.innerHTML = "";
+            for (let i = 0; i < 9; i++) {
+                if (currentIndex >= allTokens.length) {
+                    currentIndex = 0;
+                }
+                var button = document.createElement("button");
+                button.setAttribute("class", "token-button");
+                button.textContent = allTokens[currentIndex];
+                tokendisplay.appendChild(button);
+                currentIndex++;
+            }
+        }
+
+        function prepared_tokens() {
+            chekedItems.on("value", function (snapshot) {
+                let items = snapshot.val();
+                if (items) {
+                    allTokens = [];
+                    for (var key in items) {
+                        var ItemData = items[key];
+                        if (ItemData.prepared_status === "prepared") {
+                            console.log("PreparedFoodToken:", ItemData, "gmail:", ItemData.gmail, "RestItems:", key);
+                            allTokens.push(key);
+                        }
+                    }
+                    displayTokens();
+                    setInterval(displayTokens, 6000);
+                } else {
+                    let tokendisplay = document.getElementById("prepared-orders");
+                    tokendisplay.textContent = "All Items Delivered!";
+                }
+            });
+        }
+
+        prepared_tokens();
+    </script>
+</body>
+</html>
