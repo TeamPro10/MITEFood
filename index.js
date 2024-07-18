@@ -103,14 +103,10 @@ app.get('/login', (req, res) => {
         //    res.sendFile(__dirname + '/views/about.html')
             res.render(__dirname + '/view/profile1')
     })
-    app.get('/sample', (req, res) => {
+    
+    app.get('/Displaytoken', (req, res) => {
         //    res.sendFile(__dirname + '/views/about.html')
-            res.render(__dirname + '/view/profile')
-    })
-
-    app.get('/', (req, res) => {
-        //    res.sendFile(__dirname + '/views/about.html')
-            res.render(__dirname + '/view/start')
+            res.render(__dirname + '/view/DisplayToken')
     })
 
 app.listen(port, () => console.info(`App listening on port ${port}`))
